@@ -36,6 +36,21 @@ task :production do
   server "localhost", :web					# Your production server url
 end
 
+task :chmod_tmp do
+	run "chmod 777 #{latest_release}/public/app/tmp"
+	run "chmod 777 #{latest_release}/public/app/tmp/cache"
+	run "chmod 777 #{latest_release}/public/app/tmp/logs"
+	run "chmod 777 #{latest_release}/public/app/tmp/sessions"
+	run "chmod 777 #{latest_release}/public/app/tmp/tests"
+	run "chmod 777 #{latest_release}/public/app/tmp/cache/models"
+	run "chmod 777 #{latest_release}/public/app/tmp/cache/persistent"
+	run "chmod 777 #{latest_release}/public/app/tmp/cache/views"
+	#run "cp ~/database.php #{latest_release}/public/app/Config/database.php"
+	run "cp /var/jawoserver/current/phpinfo.php /var/jawoserver/current/public/app/webroot"
+end
+
+
+
 # ssh_options[:forward_agent] = true
 
 #set :cake_branch, " "
